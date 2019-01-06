@@ -7,16 +7,16 @@ SDL_Window  * window 	 = NULL;
 SDL_Renderer* renderer = NULL;
 
 bool isrunning = true;
-bool isWall 	 = false;
-bool found 		 = false;
-bool stop 		 = true;
-constexpr int CENTER 		 = SDL_WINDOWPOS_CENTERED;
+bool isWall    = false;
+bool found     = false;
+bool stop      = true;
+constexpr int CENTER 	 = SDL_WINDOWPOS_CENTERED;
 constexpr int EXUBERANCY = 2;
-constexpr int WIDTH  		 = 600 - EXUBERANCY;
-constexpr int HEIGHT 		 = 600 - EXUBERANCY;
-constexpr int edge 			 = 10;
-constexpr int cols 			 = WIDTH  / edge;
-constexpr int rows 			 = HEIGHT / edge;
+constexpr int WIDTH  	 = 600 - EXUBERANCY;
+constexpr int HEIGHT 	 = 600 - EXUBERANCY;
+constexpr int edge 	 = 10;
+constexpr int cols 	 = WIDTH  / edge;
+constexpr int rows 	 = HEIGHT / edge;
 
 void quit() {
 	isrunning = false;
