@@ -202,9 +202,9 @@ int main(int argc, char ** argv) {
 		found = false;
 		open_list.emplace_back(start_node);
 		#pragma omp for
-	  for (auto& node_ptr : walls) {
-	 	  node_ptr->wall = false;
-	  }
+		for (auto& node_ptr : walls) {
+			node_ptr->wall = false;
+		}
 		walls.clear();
 	};
 	while (isrunning) {
