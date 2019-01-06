@@ -150,7 +150,7 @@ auto h = [](Node& A, Node& B) {
 	int y1 = A.rect.y;
 	int x2 = B.rect.x;
 	int y2 = B.rect.y;
-	return sqrt(abs((x1 - x2) * (x1 - x2)) + abs((y1 - y2) * (y1 - y2)));
+	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 };
 
 int main(int argc, char ** argv) {
