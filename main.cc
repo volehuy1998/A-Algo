@@ -3,7 +3,7 @@
 using namespace std;
 
 SDL_Event event;
-SDL_Window  * window 	 = NULL;
+SDL_Window  * window   = NULL;
 SDL_Renderer* renderer = NULL;
 
 bool isrunning = true;
