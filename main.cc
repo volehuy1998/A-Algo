@@ -218,33 +218,33 @@ int main(int argc, char ** argv) {
 						case SDLK_s: stop = true;      break;
 						case SDLK_w: isWall = !isWall; break; 
 						case SDLK_b: {
-													 back();
-												 } break;
+								back();
+							     } break;
 						case SDLK_r: {
-													 back();
-													 for (auto& arr : grid) {
-														 for (auto& node : arr) {
-															 node.wall = false;
-														 }
-													 }
-												 } break;
+							        back();
+								for (auto& arr : grid) {
+									for (auto& node : arr) {
+										node.wall = false;
+									 }
+								}
+							     } break;
 						case SDLK_c: {
-													 back();
-													 static int i = 10;
-													 for (auto& arr : grid) {
-														 for (auto& node : arr) {
-														   node.wall = false;
-														 }
-													 }
-													 for (auto& arr : grid) {
-														 for (auto& node : arr) {
-															 if (random_machine::get() < (i % 60)) {
-															 	 node.wall = true;
-															 }
-														 }
-													 }
-													 i += 10;
-												 } break;
+								back();
+								static int i = 10;
+								for (auto& arr : grid) {
+									for (auto& node : arr) {
+										node.wall = false;
+									}
+								}
+								for (auto& arr : grid) {
+									for (auto& node : arr) {
+										if (random_machine::get() < (i % 60)) {
+											node.wall = true;
+										}
+									}
+								}
+								i += 10;
+								} break;
 					} break;
 				case SDL_MOUSEMOTION:
 					if (isWall && found == false) {
@@ -279,24 +279,25 @@ int main(int argc, char ** argv) {
 						found = true;
 					}
 					for (auto& child : current_node.childs) {
-						if ([&] { for (auto& closed_child : closed_list) {
-												if (*child == closed_child) {
-													return true;
-												}
-											}
-											return false;
-								}() || child->wall) {
+						if ([&] { 
+							for (auto& closed_child : closed_list) {
+								if (*child == closed_child) {
+									return true;
+								}
+							}
+							return false;
+						}() || child->wall) {
 							continue;
 						}
 						int g_temp = current_node.g + h(current_node, *child);
 						if ([&] {
-									for (auto& open_node : open_list) {
-										if (*child == open_node) {
-											return true;
-										}
-									}
-									return false;
-								}() == false) {
+							for (auto& open_node : open_list) {
+								if (*child == open_node) {
+									return true;
+								}
+							}
+							return false;
+						}() == false) {
 							open_list.emplace_back(*child);
 						} else if (g_temp >= child->g) {
 							continue;	
