@@ -164,7 +164,7 @@ int main(int argc, char ** argv) {
 	cout << setw(27) << "Type 'b' to back" << endl;
 
 	SDL_Init(SDL_INIT_EVERYTHING);	
-	window = SDL_CreateWindow("SDL2", 0, 0, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	window = SDL_CreateWindow("SDL2", 0, 0, WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS);
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	Node grid[rows][cols];
 	#pragma omp for
@@ -181,7 +181,6 @@ int main(int argc, char ** argv) {
 			grid[i][j].addChilds(grid);
 		}
 	}
-	/* astart */
 	Node &start_node = grid[1][1];
 	Node &end_node = grid[rows - 1][cols - 1];
 	start_node.wall = false;
@@ -340,7 +339,6 @@ int main(int argc, char ** argv) {
 		start_node.show(0xff, 0xff, 0x0);
 		SDL_RenderPresent(renderer);
 	}
-	/* end astart */
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
