@@ -250,7 +250,7 @@ int main(int argc, char ** argv) {
 						int x = event.motion.x;
 						int y = event.motion.y;
 						if ((x >= EXUBERANCY && x < WIDTH  - EXUBERANCY) && 
-								(y >= EXUBERANCY && y < HEIGHT - EXUBERANCY)) {
+						    (y >= EXUBERANCY && y < HEIGHT - EXUBERANCY)) {
 							grid[y / edge][x / edge].wall = true;
 							walls.emplace_back(&grid[y / edge][x / edge]);
 						}
