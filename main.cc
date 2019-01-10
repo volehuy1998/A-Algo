@@ -169,14 +169,14 @@ int main(int argc, char ** argv) {
 	Node grid[rows][cols];
 	#pragma omp for
 	for (int i = 0; i < rows; i++) {
-		//#pragma omp for
+		#pragma omp for
 		for (int j = 0; j < cols; j++) {
 			grid[i][j].setij(i, j);
 		}
 	}
 	#pragma omp for
 	for (int i = 0; i < rows; i++) {
-		//#pragma omp for
+		#pragma omp for
 		for (int j = 0; j < cols; j++) {
 			grid[i][j].addChilds(grid);
 		}
@@ -187,8 +187,7 @@ int main(int argc, char ** argv) {
 	start_node.f = h(start_node, end_node); 
 	end_node.wall = false;
 	vector<reference_wrapper<Node>> open_list;
-	vector<Node> closed_list;
-	vector<Node> path;
+	vector<Node> closed_list, path;
 	vector<Node*> walls;
 	open_list.emplace_back(start_node);
 
@@ -218,7 +217,8 @@ int main(int argc, char ** argv) {
 						case SDLK_w: isWall = !isWall; break; 
 						case SDLK_b: {
 								back();
-							     } break;
+							     } 
+							     break;
 						case SDLK_r: {
 							        back();
 								for (auto& arr : grid) {
@@ -226,7 +226,8 @@ int main(int argc, char ** argv) {
 										node.wall = false;
 									 }
 								}
-							     } break;
+							     } 
+							     break;
 						case SDLK_c: {
 								back();
 								static int i = 10;
@@ -243,7 +244,8 @@ int main(int argc, char ** argv) {
 									}
 								}
 								i += 10;
-								} break;
+							     } 
+							     break;
 					} break;
 				case SDL_MOUSEMOTION:
 					if (isWall && found == false) {
@@ -339,8 +341,8 @@ int main(int argc, char ** argv) {
 		start_node.show(0xff, 0xff, 0x0);
 		SDL_RenderPresent(renderer);
 	}
+	SDL_Quit();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
-	SDL_Quit();
 	return 0;
 }
